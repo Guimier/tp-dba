@@ -1,0 +1,96 @@
+\section{Second sujet}
+\subsection{Mise à jour du fichier de contrôle}
+
+\subsubsection{Emplacement et nom du fichier de contrôle existant}
+
+\begin{itemize}
+	\item \verb|'C:\app\isima\oradata\orcl\CONTROL01.CTL'|
+	\item \verb|'C:\app\isima\flash_recovery_area\orcl\CONTROL02.ctl'|
+\end{itemize}
+
+\subsubsection{Essai de démarrage de La base de données sans le fichier de contrôle}
+
+ORA-00205 : Erreur lors de l'identification du fichier de contrôle; consultez le journal d'alerte.
+
+\subsubsection{Multiplexage du fichier de contrôle}
+
+\begin{verbatim}
+ALTER SYSTEM SET CONTROLFILES='C:\app\isima\oradata\orcl\CONTROL02.ctl','C:\app\isima\oradata\orcl\DISK2\CTRL02Test.ctl';
+\end{verbatim}
+
+\subsubsection{Nombre maximum de fichiers de contrôle}
+
+\begin{verbatim}
+SELECT records_total FROM v$controlfile_record_section WHERE type='DATAFILE';
+\end{verbatim}
+
+Résultat : 100
+
+\subsection{Mise à jour des fichiers de reprise}
+\subsubsection{Nombre et emplacement des fichiers de reprises existants}
+
+\begin{verbatim}
+SELECT group#,member FROM v$logfile;
+\end{verbatim}
+
+Résultat : 
+
+3 groupes d'un membre :  \verb|'C:\app\isima\oradata\orcl\REDO#.log'|
+
+\subsubsection{Mode de base de données configuré}
+
+Commande :
+\begin{verbatim}
+ARCHIVE LOG LIST;
+\end{verbatim}
+
+Résultat : No archive
+
+\subsubsection{Ajout d'un membre de reprise pour chaque groupe}
+
+Commande : 
+\begin{verbatim}
+ALTER DATABASE ADD LOGFILE MEMBER 'C:\app\isima\oradata\orcl\REDO01a.log' TO GROUP 1, 'C:\app\isima\oradata\orcl\REDO02a.log' TO GROUP 2;
+\end{verbatim}
+
+\subsubsection{Nouveau groupe de fichier de reprise}
+
+Commande : 
+\begin{verbatim}
+ALTER DATABASE ADD LOGFILE group 4 ('C:\app\isima\oradata\orcl\REDO04.log', 'C:\app\isima\oradata\orcl\REDO04a.log') SIZE 50M;
+\end{verbatim}
+
+\subsubsection{Déplacer le fichier de reprise}
+
+Commande : 
+\begin{verbatim}
+ALTER DATABASE orcl RENAME FILE 'C:\app\isima\oradata\orcl\REDO04.log' TO 'C:\app\isima\oradata\orcl\DISK4\REDO04.log';
+ALTER DATABASE orcl RENAME FILE 'C:\app\isima\oradata\orcl\REDO04a.log' TO 'C:\app\isima\oradata\orcl\DISK4\REDO04a.log';
+\end{verbatim}
+
+\subsubsection{Supprimer le groupe de reprise}
+
+Commande : 
+\begin{verbatim}
+ALTER DATABASE DROP LOGFILE GROUP 4;
+\end{verbatim}
+
+
+\subsubsection{Redimensionnement des fichiers de reprise en en créant de nouveaux }
+Commande : Création d'un nouveau groupe
+\begin{verbatim}
+ALTER DATABASE ADD LOGFILE GROUP 5 ('C:\app\isima\oradata\orcl\REDO05.log', 'c:\app\isima\oradata\orcl\REDO05a.log') SIZE 4M;
+\end{verbatim}
+
+Commande : Changer de groupe courant
+\begin{verbatim}
+ALTER SYSTEM SWITCH LOGFILE;
+\end{verbatim}
+
+Une fois que les anciens groupes sont inactifs :
+\begin{verbatim}
+ALTER DATABASE DROP LOGFILE GROUP 1;
+ALTER DATABASE DROP LOGFILE GROUP 2;
+ALTER DATABASE DROP LOGFILE GROUP 3;
+ALTER DATABASE DROP LOGFILE GROUP 4;
+\end{verbatim}	
