@@ -15,16 +15,18 @@ SELECT * FROM dba_tablespaces;
 \subsubsection{Allocation de mémoire supplémentaire à la tablespace \texttt{users}}
 
 Commande :
-\begin{verbatim}
-ALTER TABLESPACE users ADD DATAFILE 'c:\app\isima\oradata\orcl\users2.dbf' SIZE 320K;
-\end{verbatim}
+\begin{verbatimtab}
+ALTER TABLESPACE users ADD DATAFILE 'c:\app\isima\oradata\orcl\users2.dbf' 
+	SIZE 320K;
+\end{verbatimtab}
 
 \subsubsection{Déplacement du tablespace \texttt{users}}
 
 Commande :
 \begin{verbatimtab}
 ALTER TABLESPACE users 
-	RENAME DATAFILE 'C:\app\isima\oradata\orcl\datafile.dbf' TO 'C:\app\isima\oradata\orcl\DISK1\datafile.dbf';
+	RENAME DATAFILE 'C:\app\isima\oradata\orcl\datafile.dbf' 
+	TO 'C:\app\isima\oradata\orcl\DISK1\datafile.dbf';
 \end{verbatimtab}
 
 
@@ -96,9 +98,11 @@ Résultat :
 \subsubsection{Fichiers contenant l'espace alloué pour la table \texttt{emp} de Scott}
 
 Commande :
-\begin{verbatim}
-SELECT file_name FROM dba_extents e, dba_data_files f WHERE owner = 'SCOTT' AND segment_name = 'EMP' AND e.file_id = f.file_id;
-\end{verbatim}
+\begin{verbatimtab}
+SELECT file_name 
+FROM dba_extents e, dba_data_files f 
+WHERE owner = 'SCOTT' AND segment_name = 'EMP' AND e.file_id = f.file_id;
+\end{verbatimtab}
 
 \subsubsection{Espace libre par tablespace}
 
