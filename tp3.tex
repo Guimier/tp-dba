@@ -1,0 +1,48 @@
+\section{Troisième sujet}
+
+\subsection{Gestion des fichiers de données et des tablespace}
+
+\subsubsection{}
+
+\subsection{Segments}
+
+\subsubsection{les différents types de segments dans la base de données}
+
+Commande :
+\begin{verbatim}
+SELECT DISTINCT segment_type FROM dba_segments;
+\end{verbatim}
+
+Résultat :
+\begin{itemize}
+\item \verb|LOB INDEX|
+\item \verb|INDEX PARTITION|
+\item \verb|NESTED TABLE|
+\item \verb|TABLE PARTITION|
+\item \verb|ROLLBACK|
+\item \verb|LOB PARTITION|
+\item \verb|LOB SEGMENT|
+\item \verb|TABLE|
+\item \verb|INDEX|
+\item \verb|CLUSTER|
+\item \verb|TYPE2 UNDO|
+\end{itemize}
+
+\subsubsection{Fichiers contenant l'espace alloué pour la table \texttt{emp} de Scott}
+
+Commande :
+\begin{verbatim}
+SELECT file_name FROM dba_extents e, dba_data_files f WHERE owner = 'SCOTT' AND segment_name = 'EMP' AND e.file_id = f.file_id;
+\end{verbatim}
+
+\subsubsection{Espace libre par tablespace}
+
+Commande :
+\begin{verbatimtab}
+SELECT	tablespace_name,
+	COUNT(*) extents_count,
+	SUM(bytes) "SIZE",
+	MAX(bytes) max_extent_size
+FROM dba_free_space
+GROUP BY tabespace_name;
+\end{verbatimtab}
