@@ -2,7 +2,72 @@
 
 \subsection{Gestion des fichiers de données et des tablespace}
 
-\subsubsection{}
+\subsubsection{Informations sur les fichiers de données et les tablespaces}
+
+Commande :
+\begin{verbatim}
+SELECT * FROM dba_data_files;
+SELECT * FROM dba_temp_files;
+SELECT * FROM dba_tablespaces;
+\end{verbatim}
+
+
+\subsubsection{Allocation de mémoire supplémentaire à la tablespace \texttt{users}}
+
+Commande :
+\begin{verbatim}
+ALTER TABLESPACE users ADD DATAFILE 'c:\app\isima\oradata\orcl\users2.dbf' SIZE 320K;
+\end{verbatim}
+
+\subsubsection{Déplacement du tablespace \texttt{users}}
+
+Commande :
+\begin{verbatimtab}
+ALTER TABLESPACE users 
+	RENAME DATAFILE 'C:\app\isima\oradata\orcl\datafile.dbf' TO 'C:\app\isima\oradata\orcl\DISK1\datafile.dbf';
+\end{verbatimtab}
+
+
+\subsubsection{Tablespace en lecture seule}
+
+Commande : Création du tablespace
+\begin{verbatim}
+CREATE TABLESPACE ronly
+	DATAFILE 'C:\app\isima\oradata\orcl\ronly.dbf' SIZE 200M;
+\end{verbatim}
+
+
+Commande : Création d'une table
+\begin{verbatim}
+CREATE TABLE ronly1 TABLESPACE ronly ( id INT );
+\end{verbatim}
+
+Commande : Mise en lecture seule
+\begin{verbatim}
+ALTER TABLESPACE ronly READ_ONLY;
+\end{verbatim}
+
+Commande : Création d'une nouvelle table
+\begin{verbatim}
+CREATE TABLE nouvelleronly TABLESPACE ronly ( id INT );
+\end{verbatim}
+
+Résultat : Création d'une nouvelle table impossible
+
+\subsubsection{Suppression du tablespace}
+
+Commande :
+\begin{verbatim}
+DROP TABLESPACE ronly INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
+\end{verbatim}
+
+\subsubsection{Création d'un tablespace temporaire}
+
+Commande :
+\begin{verbatimtab}
+CREATE TEMPORARY TABLESPACE tempy
+	TEMPFILE 'C:\app\isima\oradata\orcl\temp.dbf' SIZE 200M;
+\end{verbatimtab}
 
 \subsection{Segments}
 
