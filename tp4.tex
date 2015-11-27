@@ -130,3 +130,72 @@ SQL> SELECT sid,serial# FROM v$session WHERE username = 'BOB';
         31        753                                                           
         34        780                                                           
 \end{verbatim}
+
+\subsection{Gestion des privilèges}
+
+\subsubsection{Création de Kay}
+
+\begin{verbatim}
+CREATE USER kay IDENTIFIED BY mary DEFAULT TABLESPACE users QUOTA 1 m ON users;
+GRANT CONNECT TO kay;
+GRANT CREATE TABLE, CREATE VIEW TO kay;
+\end{verbatim}
+
+\subsubsection{Copie de \texttt{dept}}
+
+Pour pouvoir copier la structure, nous avons dû donner le droit \verb|SELECT ON scott.emp| à Kay.
+
+\begin{verbatim}
+CONNECT kay/mary;
+CREATE TABLE dept AS ( SELECT * FROM scott.dept WHERE 0 = 1 );
+EXIT;
+CONNECT / AS sysdba;
+INSERT INTO kay.dept ( SELECT * FROM scott.dept );
+GRANT SELECT ON kay.dept TO bob;
+\end{verbatim}
+
+\subsubsection{Autorisation avec droit d’accorder}
+
+\begin{verbatim}
+GRANT SELECT ON kay.dept TO bob WITH GRANT OPTION;
+\end{verbatim}
+
+\subsubsection{Création de Todd}
+
+\begin{verbatim}
+CREATE USER todd IDENTIFIED BY tr_uc DEFAULT TABLESPACE users QUOTA 1 M ON users;
+GRANT connect TO todd;
+\end{verbatim}
+
+\subsubsection{Conportement de \texttt{WITH GRANT OPTION}}
+
+\begin{verbatim}
+CONNECT bob/along;
+GRANT SELECT ON kay.dept TO todd;
+EXIT;
+CONNECT kay/mary;
+REVOKE SELECT ON kay.dept FROM bob;
+\end{verbatim}
+
+Todd ne peut plus lire la table \texttt{dept} de Kay.
+
+\subsubsection{Creation dans tous les schémas}
+
+\begin{verbatim}
+CONNECT / AS sysdba;
+GRANT CREATE ANY TABLE TO kay;
+EXIT;
+CONNECT kay/mary;
+CREATE TABLE bob.dept AS ( SELECT * FROM dept );
+\end{verbatim}
+
+La commande de création de table est acceptée et la table est créée :
+\begin{verbatim}
+SQL> select owner, table_name from dba_tables where table_name='DEPT';
+
+OWNER                          TABLE_NAME                                       
+------------------------------ ------------------------------                   
+BOB                            DEPT                                             
+KAY                            DEPT                                             
+SCOTT                          DEPT                                             
+\end{verbatim}
