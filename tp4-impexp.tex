@@ -1,0 +1,9 @@
+\subsection{Exportation et importation}
+
+\begin{verbatim}
+exp scott/tiger file=truc.tmp tables=(emp,dept)
+imp bob/along file=truc.tmp ignore=y fromuser=scott touser=bob
+\end{verbatim}
+
+L’exécution s’est terminée normalement, mais nous n’avons pas vérifié que
+l’importation des tables était effective dans la base de données.
