@@ -1,0 +1,41 @@
+\subsection{Gestion des profils}
+
+Le compte de Bob a été recréé pour cette partie comme pour la partie précédente.
+
+\subsubsection{Profil pour deux sessions simultanées}
+
+\begin{verbatim}
+CREATE PROFILE lowaccess LIMIT sessions_per_user 2 idle_time 1;
+\end{verbatim}
+
+\subsubsection{Autorisation de Bob pour deux sessions}
+
+\begin{verbatim}
+ALTER USER bob PROFILE lowaccess;
+SELECT profile FROM dba_users WHERE username = 'BOB';
+\end{verbatim}
+
+Résultat:
+\begin{verbatim}
+PROFILE                                                                         
+------------------------------                                                  
+LOWACCESS                                                                       
+\end{verbatim}
+
+\subsubsection{Vérification de l’accès simultané}
+
+Pour pouvoir nous connecter simultanément, nous avons dû activer la
+fonctionnalité de limitation :
+\begin{verbatim}
+ALTER SYSTEM SET resource_limit = true;
+\end{verbatim}
+
+L’utilisateur a pu se connecter deux fois :
+\begin{verbatim}
+SQL> SELECT sid,serial# FROM v$session WHERE username = 'BOB';
+
+       SID    SERIAL#                                                           
+---------- ----------                                                           
+        31        753                                                           
+        34        780                                                           
+\end{verbatim}

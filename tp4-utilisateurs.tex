@@ -1,0 +1,89 @@
+\subsection{Gestion des utilisateurs}
+
+\subsubsection{Création de Bob}
+
+\begin{verbatim}
+CREATE USER bob IDENTIFIED BY along DEFAULT TABLESPACE users QUOTA 1 M ON users;
+GRANT connect TO bob;
+GRANT CREATE TABLE TO bob;
+
+\end{verbatim}
+
+\subsubsection{Création de Kay et compie de \texttt{emp}}
+
+\paragraph{Création de Kay}
+\begin{verbatim}
+CREATE USER kay IDENTIFIED BY mary DEFAULT TABLESPACE users QUOTA 1 M ON users;
+GRANT connect TO kay;
+GRANT CREATE TABLE TO kay;
+GRANT SELECT ON scott.emp TO kay;
+\end{verbatim}
+
+\paragraph{Copie de la table \texttt{emp}}
+
+\begin{verbatim}
+CREATE TABLE emp AS ( SELECT * FROM scott.emp );
+\end{verbatim}
+
+\subsubsection{Informations sur les nouveaux utilisateurs} 
+
+\begin{verbatim}
+SELECT * FROM dba_users WHERE username = 'KAY' OR username = 'BOB';
+\end{verbatim}
+
+Le résultat est peu lisible, à cause du nombre cde colonnes de cette table.
+Une sélection plus spécifique permettrait d’avoir des données manipulables.
+
+\subsubsection{Quantité d’espace}
+
+\begin{verbatim}
+SELECT tablespace_name, SUM( bytes )
+FROM dba_users, dba_free_space
+WHERE username = 'BOB' AND tablespace_name = default_tablespace
+GROUP BY tablespace_name;
+\end{verbatim}
+
+Résultat :
+\begin{verbatim}
+TABLESPACE_NAME                SUM(BYTES)                                       
+------------------------------ ----------                                       
+USERS                             1179648 
+\end{verbatim}
+
+\subsubsection{suppression du quota}
+
+\begin{verbatim}
+ALTER USER bob QUOTA 0 M ON users;
+\end{verbatim}
+
+\subsubsection{Suppression de Kay}
+
+La suppression n’a pas pu être effectuée immédiatement, Kay étant connecté
+dans un autre terminal. Nous avons donc respecté la procédure suivante :
+
+\begin{verbatim}
+SQL> SELECT sid,serial# FROM v$session WHERE username = 'KAY';
+
+       SID    SERIAL#                                                           
+---------- ----------                                                           
+        29         93   
+
+SQL> ALTER SYSTEM KILL SESSION '29,93';
+
+Système modifié.
+
+SQL> DROP USER kay;
+
+Utilisateur supprimé.                                                        
+\end{verbatim}
+
+\subsubsection{Récupération du compte de Bob}
+
+\begin{verbatim}
+ALTER USER bob IDENTIFIED BY olink PASSWORD EXPIRE;
+\end{verbatim}
+
+Pour supprimer Bob, nous avons suivi la même procédure que pour Kay, excepté la dernière commande :
+\begin{verbatim}
+DROP USER bob CASCADE;
+\end{verbatim}
