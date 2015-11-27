@@ -3,16 +3,14 @@
 
 \subsubsection{Tailles des blocs et du cache de données}
 
-Taille des blocs :
+\paragraph{Taille des blocs}
 \begin{verbatim}
 SELECT value FROM v$parameter WHERE name = 'db_block_size';
 \end{verbatim}
 
 Résultat : 8 192.
 
-\hr
-
-Taille du cache de données :
+\paragraph{Taille du cache de données}
 \begin{verbatim}
 SELECT value FROM v$sga WHERE name = 'Database Buffers';
 \end{verbatim}
@@ -92,14 +90,14 @@ SYS        PROPS$                         SYSTEM
 
 \subsubsection{Paramètres actuels}
 
-Fichier \texttt{para.sql} :
+Fichier \verb|para.sql| :
 \begin{verbatim}
-set pagesize 20
-column NAME format a40
-column VALUE format a30
-spool 'tp1q4.log'
-select NAME, VALUE from V$PARAMETER;
-spool off
+SET pagesize 20
+COLUMN name FORMAT a40
+COLUMN value FORMAT a30
+SPOOL 'tp1q4.log'
+SELECT name, value FROM v$parameter;
+SPOOL OFF
 \end{verbatim}
 
 Commande :
@@ -107,7 +105,7 @@ Commande :
 @para.sql
 \end{verbatim}
 
-Fichier \texttt{tp1q4.log} (tronqué) :
+Fichier \verb|tp1q4.log| (tronqué) :
 \begin{verbatim}
 NAME                                     VALUE                                  
 ---------------------------------------- ------------------------------         
@@ -167,6 +165,80 @@ ALTER DATABASE OPEN UPGRADE;
 \end{verbatim}
 
 Sans l’ouverture manuelle de la base de données en mode
-\texttt{upgrade}, l’instance refusait de démarrer.
+\verb|upgrade|, l’instance refusait de démarrer.
 
 \subsection{Analyse d’une instance Oracle existante}
+\subsubsection{Noms et taille des blocs}
+
+Les informations se trouvent dans les lignes suivantes de \verb|v$parameter| :
+\begin{itemize}
+	\item \verb|db_name| : \verb|orcl| ;
+	\item \verb|instance_name| : \verb|orcl| ;
+	\item \verb|db_block_size| : 8 192.
+\end{itemize}
+
+\subsubsection{Fichiers}
+
+\paragraph{Fichiers de données}
+\begin{verbatim}
+SELECT name, block_size * blocks FROM v$datafile;
+\end{verbatim}
+
+Résultat :
+
+\begin{verbatim}
+NAME                                    BLOCK_SIZE*BLOCKS                       
+--------------------------------------- -----------------                       
+C:\APP\ISIMA\ORADATA\ORCL\SYSTEM01.DBF          713031680                       
+C:\APP\ISIMA\ORADATA\ORCL\SYSAUX01.DBF          524288000                       
+C:\APP\ISIMA\ORADATA\ORCL\UNDOTBS01.DBF          57671680                       
+C:\APP\ISIMA\ORADATA\ORCL\USERS01.DBF             5242880                       
+C:\APP\ISIMA\ORADATA\ORCL\EXAMPLE01.DBF         104857600                       
+\end{verbatim}
+
+\paragraph{Fichiers de reprise}
+\begin{verbatim}
+SELECT member, bytes FROM v$logfile lf, v$log l WHERE l.group# = lf.group#;
+\end{verbatim}
+
+Résultat :
+
+\begin{verbatim}
+MEMBER                                              BYTES                       
+---------------------------------------- ----------------                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO03.LOG             52428800                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO02.LOG             52428800                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO01.LOG             52428800                       
+\end{verbatim}
+
+\paragraph{Fichiers de contrôle}
+\begin{verbatim}
+SELECT name, block_size * file_size_blks FROM v$controlfile;
+\end{verbatim}
+
+Résultat :
+
+\begin{verbatim}
+NAME                                    BLOCK_SIZE*FILE_SIZE_BLKS               
+--------------------------------------- -------------------------               
+C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL                   9732096               
+C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C                   9732096               
+ONTROL02.CTL  
+\end{verbatim}
+
+\subsubsection{Numéro de version}
+
+\begin{verbatim}
+SELECT version FROM product_component_version WHERE product LIKE '%Database%';
+\end{verbatim}
+
+Résultat : \verb|11.2.0.1.0|.
+
+\subsubsection{Limite du nombre de processus utilisateurs}
+
+\begin{verbatim}
+SELECT value FROM v$parameter WHERE name = 'processes'
+\end{verbatim}
+
+Résultat : 150.
+
