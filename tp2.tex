@@ -69,5 +69,25 @@ ALTER DATABASE orcl RENAME FILE 'C:\app\isima\oradata\orcl\REDO04a.log' TO 'C:\a
 
 Commande : 
 \begin{verbatim}
-ALTER DATABASE DROP LOGFILE group 4;
+ALTER DATABASE DROP LOGFILE GROUP 4;
+\end{verbatim}
+
+
+\subsubsection{Redimensionnement des fichiers de reprise en en créant de nouveaux }
+Commande : Création d'un nouveau groupe
+\begin{verbatim}
+ALTER DATABASE ADD LOGFILE GROUP 5 ('C:\app\isima\oradata\orcl\REDO05.log', 'c:\app\isima\oradata\orcl\REDO05a.log') SIZE 4M;
+\end{verbatim}
+
+Commande : Changer de groupe courant
+\begin{verbatim}
+ALTER SYSTEM SWITCH LOGFILE;
+\end{verbatim}
+
+Une fois que les anciens groupes sont inactifs :
+\begin{verbatim}
+ALTER DATABASE DROP LOGFILE GROUP 1;
+ALTER DATABASE DROP LOGFILE GROUP 2;
+ALTER DATABASE DROP LOGFILE GROUP 3;
+ALTER DATABASE DROP LOGFILE GROUP 4;
 \end{verbatim}
