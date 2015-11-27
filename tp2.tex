@@ -14,6 +14,9 @@ ORA-00205 : Erreur lors de l'identification du fichier de contrôle; consultez l
 
 \subsubsection{Multiplexage du fichier de contrôle}
 
+\begin{verbatim}
+ALTER SYSTEM SET CONTROLFILES='C:\app\isima\oradata\orcl\CONTROL02.ctl','C:\app\isima\oradata\orcl\DISK2\CTRL02Test.ctl';
+\end{verbatim}
 
 \subsubsection{Nombre maximum de fichiers de contrôle}
 
@@ -38,7 +41,7 @@ Résultat :
 
 Commande :
 \begin{verbatim}
-archive log list;
+ARCHIVE LOG LIST;
 \end{verbatim}
 
 Résultat : No archive
@@ -90,4 +93,4 @@ ALTER DATABASE DROP LOGFILE GROUP 1;
 ALTER DATABASE DROP LOGFILE GROUP 2;
 ALTER DATABASE DROP LOGFILE GROUP 3;
 ALTER DATABASE DROP LOGFILE GROUP 4;
-\end{verbatim}
+\end{verbatim}	
