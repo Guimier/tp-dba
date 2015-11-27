@@ -1,0 +1,221 @@
+SQL> select name, block_size * file_size_blks from v$controlfile;
+
+NAME                                    BLOCK_SIZE*FILE_SIZE_BLKS               
+--------------------------------------- -------------------------               
+C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL                   9732096               
+C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C                   9732096               
+ONTROL02.CTL                                                                    
+                                                                                
+
+SQL> 
+SQL> C:\Users\isima>sqlplus /nolog
+SP2-0023: Chaîne inexistante.
+SQL> 
+SQL> SQL*Plus: Release 11.2.0.1.0 Production on Ven. Oct. 23 11:27:37 2015
+SP2-0734: commande inconnue au début de "SQL*Plus: ..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+SP2-0734: commande inconnue au début de "Copyright ..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> SQL> conn / as sysdba
+SP2-0734: commande inconnue au début de "SQL> conn ..." - le reste de la ligne est ignoré.
+SQL> Connecté.
+SP2-0042: commande inconnue "Connecté." - reste de la ligne ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> SQL> select name, value from v$parameter where name = 'db_name' or name = 'insta
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> nce_name' or name = 'db_block_size';
+SP2-0734: commande inconnue au début de "nce_name' ..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> NAME
+SP2-0042: commande inconnue "NAME" - reste de la ligne ignoré.
+SQL> --------------------------------------------------------------------------------
+SQL> 
+SQL> VALUE
+SP2-0042: commande inconnue "VALUE" - reste de la ligne ignoré.
+SQL> --------------------------------------------------------------------------------
+SQL> 
+SQL> db_block_size
+SP2-0734: commande inconnue au début de "db_block_s..." - le reste de la ligne est ignoré.
+SQL> 8192
+SP2-0226: numéro de ligne  non valide
+SQL> 
+SQL> instance_name
+SP2-0734: commande inconnue au début de "instance_n..." - le reste de la ligne est ignoré.
+SQL> orcl
+SP2-0042: commande inconnue "orcl" - reste de la ligne ignoré.
+SQL> 
+SQL> db_name
+SP2-0042: commande inconnue "db_name" - reste de la ligne ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> orcl
+SP2-0042: commande inconnue "orcl" - reste de la ligne ignoré.
+SQL> 
+SQL> 
+SQL> SQL> set wrap off
+SP2-0734: commande inconnue au début de "SQL> set w..." - le reste de la ligne est ignoré.
+SQL> SQL> select name, value from v$parameter where name = 'db_name' or name = 'insta
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> nce_name' or name = 'db_block_size';
+SP2-0734: commande inconnue au début de "nce_name' ..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> les lignes seront tronquées
+SP2-0734: commande inconnue au début de "les lignes..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> 
+SQL> NAME
+SP2-0042: commande inconnue "NAME" - reste de la ligne ignoré.
+SQL> --------------------------------------------------------------------------------
+SQL> 
+SQL> db_block_size
+SP2-0734: commande inconnue au début de "db_block_s..." - le reste de la ligne est ignoré.
+SQL> instance_name
+SP2-0734: commande inconnue au début de "instance_n..." - le reste de la ligne est ignoré.
+SQL> db_name
+SP2-0042: commande inconnue "db_name" - reste de la ligne ignoré.
+SQL> 
+SQL> SQL> set wrap on
+SP2-0734: commande inconnue au début de "SQL> set w..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> SQL> column value format a40
+SP2-0734: commande inconnue au début de "SQL> colum..." - le reste de la ligne est ignoré.
+SQL> SQL> column name format a40
+SP2-0734: commande inconnue au début de "SQL> colum..." - le reste de la ligne est ignoré.
+SQL> SQL> select name, value from v$parameter where name = 'db_name' or name = 'insta
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> nce_name' or name = 'db_block_size';
+SP2-0734: commande inconnue au début de "nce_name' ..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> 
+SQL> NAME
+SP2-0042: commande inconnue "NAME" - reste de la ligne ignoré.
+SQL> ----------------------------------------
+SQL> VALUE
+SP2-0042: commande inconnue "VALUE" - reste de la ligne ignoré.
+SQL> ----------------------------------------
+SQL> db_block_size
+SP2-0734: commande inconnue au début de "db_block_s..." - le reste de la ligne est ignoré.
+SQL> 8192
+SP2-0226: numéro de ligne  non valide
+SQL> 
+SQL> instance_name
+SP2-0734: commande inconnue au début de "instance_n..." - le reste de la ligne est ignoré.
+SQL> orcl
+SP2-0042: commande inconnue "orcl" - reste de la ligne ignoré.
+SQL> 
+SQL> db_name
+SP2-0042: commande inconnue "db_name" - reste de la ligne ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> orcl
+SP2-0042: commande inconnue "orcl" - reste de la ligne ignoré.
+SQL> 
+SQL> 
+SQL> SQL> column name format a39
+SP2-0734: commande inconnue au début de "SQL> colum..." - le reste de la ligne est ignoré.
+SQL> SQL> column value format a39
+SP2-0734: commande inconnue au début de "SQL> colum..." - le reste de la ligne est ignoré.
+SQL> SQL> select name, value from v$parameter where name = 'db_name' or name = 'insta
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> nce_name' or name = 'db_block_size';
+SP2-0734: commande inconnue au début de "nce_name' ..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> NAME                                    VALUE
+SP2-0734: commande inconnue au début de "NAME      ..." - le reste de la ligne est ignoré.
+SQL> --------------------------------------- ---------------------------------------
+SQL> db_block_size                           8192
+SP2-0734: commande inconnue au début de "db_block_s..." - le reste de la ligne est ignoré.
+SQL> instance_name                           orcl
+SP2-0734: commande inconnue au début de "instance_n..." - le reste de la ligne est ignoré.
+SQL> db_name                                 orcl
+SP2-0734: commande inconnue au début de "db_name   ..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> SQL> select * fromv$ controlfiles;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> select * fromv$ controlfiles
+  2           *
+  3  ERREUR à la ligne 1 :
+  4  ORA-00923: mot-clé FROM absent à l'emplacement prévu
+  5  
+SQL> 
+SQL> SQL> select * from v$controlfiles;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> select * from v$controlfiles
+  2                *
+  3  ERREUR à la ligne 1 :
+  4  ORA-00942: Table ou vue inexistante
+  5  
+SQL> 
+SQL> SQL> select * from v$controlfile;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> STATUS  NAME                                    IS_ BLOCK_SIZE FILE_SIZE_BLKS
+SP2-0734: commande inconnue au début de "STATUS  NA..." - le reste de la ligne est ignoré.
+SQL> ------- --------------------------------------- --- ---------- --------------
+SQL>         C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL NO       16384            594
+SP2-0023: Chaîne inexistante.
+SQL>         C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C NO       16384            594
+SP2-0023: Chaîne inexistante.
+SQL>         ONTROL02.CTL
+SP2-0734: commande inconnue au début de "ONTROL02.C..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> 
+SQL> SQL> select name from v$controlfile;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> NAME
+SP2-0042: commande inconnue "NAME" - reste de la ligne ignoré.
+SQL> ---------------------------------------
+SQL> C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL
+SP2-0023: Chaîne inexistante.
+SQL> C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C
+SP2-0023: Chaîne inexistante.
+SQL> ONTROL02.CTL
+SP2-0734: commande inconnue au début de "ONTROL02.C..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> 
+SQL> SQL> select name, block_size * file_size_blks from v$controlfile;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> NAME                                    BLOCK_SIZE*FILE_SIZE_BLKS
+SP2-0734: commande inconnue au début de "NAME      ..." - le reste de la ligne est ignoré.
+SQL> --------------------------------------- -------------------------
+SQL> C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL                   9732096
+SP2-0023: Chaîne inexistante.
+SQL> C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C                   9732096
+SP2-0023: Chaîne inexistante.
+SQL> ONTROL02.CTL
+SP2-0734: commande inconnue au début de "ONTROL02.C..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> 
+SQL> SQL> spool tp1q2-2
+SP2-0734: commande inconnue au début de "SQL> spool..." - le reste de la ligne est ignoré.
+SQL> SQL> select name, block_size * file_size_blks from v$controlfile;
+SP2-0734: commande inconnue au début de "SQL> selec..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> NAME                                    BLOCK_SIZE*FILE_SIZE_BLKS
+SP2-0734: commande inconnue au début de "NAME      ..." - le reste de la ligne est ignoré.
+SP2-0044: Pour la liste des commandes connues entrez HELP
+and et pour sortir EXIT.
+SQL> --------------------------------------- -------------------------
+SQL> C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL                   9732096
+SP2-0023: Chaîne inexistante.
+SQL> C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C                   9732096
+SP2-0023: Chaîne inexistante.
+SQL> ONTROL02.CTL
+SP2-0734: commande inconnue au début de "ONTROL02.C..." - le reste de la ligne est ignoré.
+SQL> 
+SQL> 
+SQL> SQL>
+SP2-0042: commande inconnue "SQL>" - reste de la ligne ignoré.
+SQL> 
+SQL> spool off

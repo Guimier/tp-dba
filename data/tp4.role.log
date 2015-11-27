@@ -1,0 +1,109 @@
+SQL>  select * from dba_role_privs where GRANTED_ROLE='RESOURCE';
+
+GRANTEE                        GRANTED_ROLE                   ADM DEF           
+------------------------------ ------------------------------ --- ---           
+WMSYS                          RESOURCE                       NO  YES           
+SCOTT                          RESOURCE                       NO  YES           
+SPATIAL_CSW_ADMIN_USR          RESOURCE                       NO  YES           
+HR                             RESOURCE                       NO  YES           
+LOGSTDBY_ADMINISTRATOR         RESOURCE                       NO  YES           
+EXFSYS                         RESOURCE                       NO  YES           
+SPATIAL_WFS_ADMIN_USR          RESOURCE                       NO  YES           
+OE                             RESOURCE                       NO  YES           
+PM                             RESOURCE                       NO  YES           
+CTXSYS                         RESOURCE                       NO  YES           
+OLAPSYS                        RESOURCE                       NO  YES           
+
+GRANTEE                        GRANTED_ROLE                   ADM DEF           
+------------------------------ ------------------------------ --- ---           
+MDSYS                          RESOURCE                       NO  YES           
+XDB                            RESOURCE                       NO  YES           
+APEX_030200                    RESOURCE                       YES YES           
+SYS                            RESOURCE                       YES YES           
+SYSMAN                         RESOURCE                       NO  YES           
+IX                             RESOURCE                       NO  YES           
+OUTLN                          RESOURCE                       NO  YES           
+MDDATA                         RESOURCE                       NO  YES           
+
+19 ligne(s) sélectionnée(s).
+
+SQL> create role dev ;
+
+Rôle créé.
+
+SQL> grant create table, create view to dev
+  2  ;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant select on kay.dept to dev;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> select privilege from role_sys_privs where role='RESOURCE';
+
+PRIVILEGE                                                                       
+----------------------------------------                                        
+CREATE SEQUENCE                                                                 
+CREATE TRIGGER                                                                  
+CREATE CLUSTER                                                                  
+CREATE PROCEDURE                                                                
+CREATE TYPE                                                                     
+CREATE OPERATOR                                                                 
+CREATE TABLE                                                                    
+CREATE INDEXTYPE                                                                
+
+8 ligne(s) sélectionnée(s).
+
+SQL> select owner, table_name, column_name, privilege, grantable from role_tab_privs where role='RESOURCE';
+les lignes seront tronquées
+
+les lignes seront tronquées
+
+
+aucune ligne sélectionnée
+
+SQL> grant resource, dev to bob;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> alter user scott identified by tiger;
+
+Utilisateur modifié.
+
+SQL> grant sysdba to bob;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> revoke sysdba from bob;
+
+Suppression de privilèges (REVOKE) acceptée.
+
+SQL> create role dd;
+
+Rôle créé.
+
+SQL> grant select on sys.* to dd;
+grant select on sys.* to dd
+                    *
+ERREUR à la ligne 1 :
+ORA-00903: nom de table non valide 
+
+
+SQL> drop role dd;
+
+Rôle supprimé.
+
+SQL> grant SELECT_CATALOG_ROLE to bob;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> alter user bob default role dev;
+
+Utilisateur modifié.
+
+SQL> alter user bob default role all except SELECT_CATALOG_ROLE;
+
+Utilisateur modifié.
+
+SQL> spool off

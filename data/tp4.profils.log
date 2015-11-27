@@ -1,0 +1,97 @@
+SQL> create profile lowaccess limit session_per_user 2 idle_time 1 ;
+create profile lowaccess limit session_per_user 2 idle_time 1 
+                               *
+ERREUR à la ligne 1 :
+ORA-02376: ressource erronée ou redondante 
+
+
+SQL> create profile lowaccess limit sessions_per_user 2 idle_time 1 ;
+
+Profil créé.
+
+SQL> create user bob identified by along default tablespace user quota 1 M on user ;
+create user bob identified by along default tablespace user quota 1 M on user 
+                                                       *
+ERREUR à la ligne 1 :
+ORA-02155: identificateur de DEFAULT TABLESPACE non valide 
+
+
+SQL> create user bob identified by along default tablespace users quota 1 M on users ;
+
+Utilisateur créé.
+
+SQL> alter user bob profile lowaccsess
+  2  ;
+alter user bob profile lowaccsess
+*
+ERREUR à la ligne 1 :
+ORA-02380: le profil LOWACCSESS n'existe pas 
+
+
+SQL> alter user bob profile lowaccess;
+
+Utilisateur modifié.
+
+SQL> describe dba_users;
+ Nom                                       NULL ?   Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                  NOT NULL VARCHAR2(30)
+ USER_ID                                   NOT NULL NUMBER
+ PASSWORD                                           VARCHAR2(30)
+ ACCOUNT_STATUS                            NOT NULL VARCHAR2(32)
+ LOCK_DATE                                          DATE
+ EXPIRY_DATE                                        DATE
+ DEFAULT_TABLESPACE                        NOT NULL VARCHAR2(30)
+ TEMPORARY_TABLESPACE                      NOT NULL VARCHAR2(30)
+ CREATED                                   NOT NULL DATE
+ PROFILE                                   NOT NULL VARCHAR2(30)
+ INITIAL_RSRC_CONSUMER_GROUP                        VARCHAR2(30)
+ EXTERNAL_NAME                                      VARCHAR2(4000)
+ PASSWORD_VERSIONS                                  VARCHAR2(8)
+ EDITIONS_ENABLED                                   VARCHAR2(1)
+ AUTHENTICATION_TYPE                                VARCHAR2(8)
+
+SQL> select profile from dba_users where username='BOB';
+
+PROFILE                                                                         
+------------------------------                                                  
+LOWACCESS                                                                       
+
+SQL> grant connect to bob;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> select sid,serial# from v$session where username = 'BOB';
+
+       SID    SERIAL#                                                           
+---------- ----------                                                           
+        26        322                                                           
+        31        751                                                           
+        34        778                                                           
+
+SQL> alter system set resource_limits = true;
+alter system set resource_limits = true
+                 *
+ERREUR à la ligne 1 :
+ORA-02065: option interdite pour ALTER SYSTEM 
+
+
+SQL> alter system set resources_limits = true;
+alter system set resources_limits = true
+                 *
+ERREUR à la ligne 1 :
+ORA-02065: option interdite pour ALTER SYSTEM 
+
+
+SQL> alter system set resource_limit = true;
+
+Système modifié.
+
+SQL> select sid,serial# from v$session where username = 'BOB';
+
+       SID    SERIAL#                                                           
+---------- ----------                                                           
+        31        753                                                           
+        34        780                                                           
+
+SQL> spool off

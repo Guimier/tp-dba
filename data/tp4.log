@@ -1,0 +1,49 @@
+SQL> create user bob identified by along default tablespace user quota 1 M on user ;
+create user bob identified by along default tablespace user quota 1 M on user 
+                                                       *
+ERREUR à la ligne 1 :
+ORA-02155: identificateur de DEFAULT TABLESPACE non valide 
+
+
+SQL> create user bob identified by along default tablespace 'USER' quota 1 M on user ;
+create user bob identified by along default tablespace 'USER' quota 1 M on user 
+                                                       *
+ERREUR à la ligne 1 :
+ORA-02155: identificateur de DEFAULT TABLESPACE non valide 
+
+
+SQL> startup
+ORA-01081: impossible de lancer ORACLE déjà en cours - fermer d'abord le thread
+SQL> select name from v$tablespace;
+
+NAME                                                                            
+------------------------------                                                  
+SYSTEM                                                                          
+SYSAUX                                                                          
+UNDOTBS1                                                                        
+USERS                                                                           
+TEMP                                                                            
+EXAMPLE                                                                         
+TEMPY                                                                           
+
+7 ligne(s) sélectionnée(s).
+
+SQL> create user bob identified by along default tablespace 'USERS' quota 1 M on user ;
+create user bob identified by along default tablespace 'USERS' quota 1 M on user 
+                                                       *
+ERREUR à la ligne 1 :
+ORA-02155: identificateur de DEFAULT TABLESPACE non valide 
+
+
+SQL> create user bob identified by along default tablespace USERS quota 1 M on user ;
+create user bob identified by along default tablespace USERS quota 1 M on user 
+                                                                          *
+ERREUR à la ligne 1 :
+ORA-02156: identificateur de TEMPORARY TABLESPACE non valide 
+
+
+SQL> create user bob identified by along default tablespace USERS quota 1 M on users ;
+
+Utilisateur créé.
+
+SQL> spool off

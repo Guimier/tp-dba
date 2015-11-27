@@ -1,0 +1,298 @@
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            STREAMS$_KEY_COLUMNS           SYSTEM
+SYS                            STREAMS$_DEF_PROC              SYSTEM
+SYS                            STREAMS$_RULES                 SYSTEM
+SYS                            APPLY$_SOURCE_OBJ              SYSTEM
+SYS                            APPLY$_SOURCE_SCHEMA           SYSTEM
+SYS                            APPLY$_VIRTUAL_OBJ_CONS        SYSTEM
+SYS                            APPLY$_CONSTRAINT_COLUMNS      SYSTEM
+SYS                            APPLY$_DEST_OBJ                SYSTEM
+SYS                            APPLY$_DEST_OBJ_CMAP           SYSTEM
+SYS                            APPLY$_DEST_OBJ_OPS            SYSTEM
+SYS                            STREAMS$_STMT_HANDLERS         SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            STREAMS$_STMT_HANDLER_STMTS    SYSTEM
+SYS                            APPLY$_CHANGE_HANDLERS         SYSTEM
+SYS                            APPLY$_ERROR                   SYSAUX
+SYS                            APPLY$_ERROR_TXN               SYSTEM
+SYS                            APPLY$_ERROR_HANDLER           SYSTEM
+SYS                            APPLY$_CONF_HDLR_COLUMNS       SYSTEM
+SYS                            STREAMS$_DEST_OBJS             SYSTEM
+SYS                            STREAMS$_DEST_OBJ_COLS         SYSTEM
+SYS                            STREAMS$_PRIVILEGED_USER       SYSTEM
+SYS                            STREAMS$_MESSAGE_RULES         SYSTEM
+SYS                            STREAMS$_MESSAGE_CONSUMERS     SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            STREAMS$_APPLY_SPILL_TXN       SYSAUX
+SYS                            STREAMS$_APPLY_SPILL_TXN_LIST  SYSAUX
+SYS                            FGR$_FILE_GROUPS               SYSTEM
+SYS                            FGR$_FILE_GROUP_VERSIONS       SYSTEM
+SYS                            FGR$_FILE_GROUP_EXPORT_INFO    SYSTEM
+SYS                            FGR$_FILE_GROUP_FILES          SYSTEM
+SYS                            FGR$_TABLESPACE_INFO           SYSTEM
+SYS                            FGR$_TABLE_INFO                SYSTEM
+SYS                            REDEF$                         SYSTEM
+SYS                            REDEF_OBJECT$                  SYSTEM
+SYS                            REDEF_DEP_ERROR$               SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            RULESET$                       SYSTEM
+SYS                            LOG$                           SYSTEM
+SYS                            RECO_SCRIPT$                   SYSAUX
+SYS                            RECO_SCRIPT_PARAMS$            SYSAUX
+SYS                            RECO_SCRIPT_BLOCK$             SYSAUX
+SYS                            RECO_SCRIPT_ERROR$             SYSAUX
+SYS                            COMPARISON$                    SYSAUX
+SYS                            COMPARISON_COL$                SYSAUX
+SYS                            COMPARISON_SCAN$               SYSAUX
+SYS                            COMPARISON_SCAN_VAL$           SYSAUX
+SYS                            COMPARISON_ROW_DIF$            SYSAUX
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            STREAMS$_COMPONENT             SYSAUX
+SYS                            STREAMS$_COMPONENT_LINK        SYSAUX
+SYS                            STREAMS$_COMPONENT_PROP        SYSAUX
+SYS                            STREAMS$_DATABASE              SYSAUX
+SYS                            XSTREAM$_SERVER                SYSTEM
+SYS                            XSTREAM$_SUBSET_RULES          SYSTEM
+SYS                            XSTREAM$_SYSGEN_OBJS           SYSTEM
+SYS                            AW$                            SYSAUX
+SYS                            PS$                            SYSAUX
+SYS                            AW_OBJ$                        SYSAUX
+SYS                            AW_PROP$                       SYSAUX
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            AW_TRACK$                      SYSAUX
+SYS                            AW_PRG$                        SYSAUX
+SYS                            OLAP_MAPPINGS$                 SYSTEM
+SYS                            OLAP_MODELS$                   SYSTEM
+SYS                            OLAP_MODEL_PARENTS$            SYSTEM
+SYS                            OLAP_MODEL_ASSIGNMENTS$        SYSTEM
+SYS                            OLAP_CALCULATED_MEMBERS$       SYSTEM
+SYS                            OLAP_SYNTAX$                   SYSTEM
+SYS                            OLAP_DESCRIPTIONS$             SYSTEM
+SYS                            OLAP_CUBE_BUILD_PROCESSES$     SYSTEM
+SYS                            OLAP_AW_VIEWS$                 SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            OLAP_AW_VIEW_COLUMNS$          SYSTEM
+SYS                            OLAP_MEASURE_FOLDERS$          SYSTEM
+SYS                            OLAP_MEAS_FOLDER_CONTENTS$     SYSTEM
+SYS                            OLAP_AW_DEPLOYMENT_CONTROLS$   SYSTEM
+SYS                            OLAP_IMPL_OPTIONS$             SYSTEM
+SYS                            OLAP_MULTI_OPTIONS$            SYSTEM
+SYS                            OLAP_CUBE_DIMENSIONS$          SYSTEM
+SYS                            OLAP_DIM_LEVELS$               SYSTEM
+SYS                            OLAP_ATTRIBUTES$               SYSTEM
+SYS                            OLAP_ATTRIBUTE_VISIBILITY$     SYSTEM
+SYS                            OLAP_HIERARCHIES$              SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            OLAP_HIER_LEVELS$              SYSTEM
+SYS                            OLAP_CUBES$                    SYSTEM
+SYS                            OLAP_MEASURES$                 SYSTEM
+SYS                            OLAP_DIMENSIONALITY$           SYSTEM
+SYS                            OLAP_TAB$                      SYSTEM
+SYS                            OLAP_TAB_COL$                  SYSTEM
+SYS                            OLAP_TAB_HIER$                 SYSTEM
+SYS                            SUM$                           SYSTEM
+SYS                            SUMDETAIL$                     SYSTEM
+SYS                            SUMINLINE$                     SYSTEM
+SYS                            SUMKEY$                        SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            SUMAGG$                        SYSTEM
+SYS                            SUMJOIN$                       SYSTEM
+SYS                            SUMDEP$                        SYSTEM
+SYS                            SUMPRED$                       SYSTEM
+SYS                            SUMQB$                         SYSTEM
+SYS                            HIER$                          SYSTEM
+SYS                            HIERLEVEL$                     SYSTEM
+SYS                            DIM$                           SYSTEM
+SYS                            DIMLEVEL$                      SYSTEM
+SYS                            DIMLEVELKEY$                   SYSTEM
+SYS                            DIMJOINKEY$                    SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            DIMATTR$                       SYSTEM
+SYS                            INCEXP                         SYSTEM
+SYS                            INCVID                         SYSTEM
+SYS                            INCFIL                         SYSTEM
+SYS                            EXPACT$                        SYSTEM
+SYS                            NOEXP$                         SYSTEM
+SYS                            EXPPKGOBJ$                     SYSTEM
+SYS                            EXPPKGACT$                     SYSTEM
+SYS                            EXPDEPOBJ$                     SYSTEM
+SYS                            EXPDEPACT$                     SYSTEM
+SYS                            EXPIMP_TTS_CT$                 SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            METAVIEW$                      SYSTEM
+SYS                            METAFILTER$                    SYSTEM
+SYS                            METAXSL$                       SYSTEM
+SYS                            METAXSLPARAM$                  SYSTEM
+SYS                            METASTYLESHEET                 SYSTEM
+SYS                            METASCRIPT$                    SYSTEM
+SYS                            METASCRIPTFILTER$              SYSTEM
+SYS                            METANAMETRANS$                 SYSTEM
+SYS                            METAPATHMAP$                   SYSTEM
+SYS                            EXTERNAL_TAB$                  SYSTEM
+SYS                            EXTERNAL_LOCATION$             SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            MODEL$                         SYSAUX
+SYS                            MODELTAB$                      SYSAUX
+SYS                            MODELATT$                      SYSAUX
+SYS                            MODELSET$                      SYSAUX
+SYSTEM                         LOGMNR_SESSION_EVOLVE$         SYSAUX
+SYSTEM                         LOGMNR_GLOBAL$                 SYSAUX
+SYSTEM                         LOGMNR_GT_TAB_INCLUDE$
+SYSTEM                         LOGMNR_GT_USER_INCLUDE$
+SYSTEM                         LOGMNR_GT_XID_INCLUDE$
+SYSTEM                         LOGMNR_UID$                    SYSAUX
+SYS                            LOGMNR_BUILDLOG                SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYSTEM                         LOGMNRC_DBNAME_UID_MAP         SYSAUX
+SYSTEM                         LOGMNR_LOG$                    SYSAUX
+SYSTEM                         LOGMNR_PROCESSED_LOG$          SYSAUX
+SYSTEM                         LOGMNR_SPILL$                  SYSAUX
+SYSTEM                         LOGMNR_AGE_SPILL$              SYSAUX
+SYSTEM                         LOGMNR_RESTART_CKPT_TXINFO$    SYSAUX
+SYSTEM                         LOGMNR_ERROR$                  SYSAUX
+SYSTEM                         LOGMNR_RESTART_CKPT$           SYSAUX
+SYSTEM                         LOGMNR_FILTER$                 SYSAUX
+SYSTEM                         LOGMNR_SESSION_ACTIONS$        SYSAUX
+SYSTEM                         LOGMNR_PARAMETER$              SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYSTEM                         LOGMNR_SESSION$                SYSTEM
+SYS                            LOGMNRG_SEED$                  SYSTEM
+SYS                            LOGMNRG_DICTIONARY$            SYSTEM
+SYS                            LOGMNRG_OBJ$                   SYSTEM
+SYS                            LOGMNRG_TAB$                   SYSTEM
+SYS                            LOGMNRG_COL$                   SYSTEM
+SYS                            LOGMNRG_ATTRCOL$               SYSTEM
+SYS                            LOGMNRG_TS$                    SYSTEM
+SYS                            LOGMNRG_IND$                   SYSTEM
+SYS                            LOGMNRG_USER$                  SYSTEM
+SYS                            LOGMNRG_TABPART$               SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            LOGMNRG_TABSUBPART$            SYSTEM
+SYS                            LOGMNRG_TABCOMPART$            SYSTEM
+SYS                            LOGMNRG_TYPE$                  SYSTEM
+SYS                            LOGMNRG_COLTYPE$               SYSTEM
+SYS                            LOGMNRG_ATTRIBUTE$             SYSTEM
+SYS                            LOGMNRG_LOB$                   SYSTEM
+SYS                            LOGMNRG_CDEF$                  SYSTEM
+SYS                            LOGMNRG_CCOL$                  SYSTEM
+SYS                            LOGMNRG_ICOL$                  SYSTEM
+SYS                            LOGMNRG_LOBFRAG$               SYSTEM
+SYS                            LOGMNRG_INDPART$               SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            LOGMNRG_INDSUBPART$            SYSTEM
+SYS                            LOGMNRG_INDCOMPART$            SYSTEM
+SYS                            LOGMNRG_LOGMNR_BUILDLOG        SYSTEM
+SYS                            LOGMNRG_NTAB$                  SYSTEM
+SYS                            LOGMNRG_OPQTYPE$               SYSTEM
+SYS                            LOGMNRG_SUBCOLTYPE$            SYSTEM
+SYS                            LOGMNRG_KOPM$                  SYSTEM
+SYS                            LOGMNRG_PROPS$                 SYSTEM
+SYS                            LOGMNRG_ENC$                   SYSTEM
+SYS                            LOGMNRG_REFCON$                SYSTEM
+SYS                            LOGMNRG_PARTOBJ$               SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYSTEM                         LOGMNRT_MDDL$
+SYS                            DST$AFFECTED_TABLES            SYSTEM
+SYS                            DST$ERROR_TABLE                SYSTEM
+SYS                            DST$TRIGGER_TABLE              SYSTEM
+SYS                            SYS_FBA_FA                     SYSTEM
+SYS                            SYS_FBA_TSFA                   SYSTEM
+SYS                            SYS_FBA_BARRIERSCN             SYSTEM
+SYS                            SYS_FBA_TRACKEDTABLES          SYSTEM
+SYS                            SYS_FBA_PARTITIONS             SYSTEM
+SYS                            SYS_FBA_USERS                  SYSTEM
+SYS                            SYS_FBA_DL                     SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYS                            REGISTRY$                      SYSTEM
+SYS                            REGISTRY$SCHEMAS               SYSTEM
+SYS                            REGISTRY$LOG                   SYSTEM
+SYS                            REGISTRY$ERROR                 SYSTEM
+SYS                            REGISTRY$HISTORY               SYSTEM
+SYS                            REGISTRY$PROGRESS              SYSTEM
+SYS                            REGISTRY$DEPENDENCIES          SYSTEM
+SYS                            REGISTRY$DATABASE              SYSTEM
+SYS                            AUDIT_ACTIONS                  SYSTEM
+SYSTEM                         MVIEW$_ADV_WORKLOAD            SYSTEM
+SYSTEM                         MVIEW$_ADV_BASETABLE           SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYSTEM                         MVIEW$_ADV_SQLDEPEND           SYSTEM
+SYSTEM                         MVIEW$_ADV_PRETTY              SYSTEM
+SYSTEM                         MVIEW$_ADV_TEMP                SYSTEM
+SYSTEM                         MVIEW$_ADV_FILTER              SYSTEM
+SYSTEM                         MVIEW$_ADV_LOG                 SYSTEM
+SYSTEM                         MVIEW$_ADV_FILTERINSTANCE      SYSTEM
+SYSTEM                         MVIEW$_ADV_LEVEL               SYSTEM
+SYSTEM                         MVIEW$_ADV_ROLLUP              SYSTEM
+SYSTEM                         MVIEW$_ADV_AJG                 SYSTEM
+SYSTEM                         MVIEW$_ADV_FJG                 SYSTEM
+SYSTEM                         MVIEW$_ADV_GC                  SYSTEM
+
+OWNER                          TABLE_NAME                     TABLESPACE_NAME
+------------------------------ ------------------------------ ------------------
+
+SYSTEM                         MVIEW$_ADV_CLIQUE              SYSTEM
+SYSTEM                         MVIEW$_ADV_ELIGIBLE            SYSTEM
+SYSTEM                         MVIEW$_ADV_OUTPUT              SYSTEM
+SYSTEM                         MVIEW$_ADV_EXCEPTIONS          SYSTEM
+SYSTEM                         MVIEW$_ADV_PARAMETERS          SYSTEM
+SYSTEM                         MVIEW$_ADV_INFO                SYSTEM
+SYSTEM                         MVIEW$_ADV_JOURNAL             SYSTEM
+SYSTEM                         MVIEW$_ADV_PLAN                SYSTEM
+
+492 ligne(s) sÚlectionnÚe(s).

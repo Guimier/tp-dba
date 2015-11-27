@@ -1,0 +1,312 @@
+SQL> create user kay default tablespace users quota 1 m on users
+  2  ;
+
+*
+ERREUR à la ligne 2 :
+ORA-01938: IDENTIFIED BY doit être indiqué pour CREATE USER 
+
+
+SQL> create user kay identified by mary default tablespace users quota 1 m on users;
+
+Utilisateur créé.
+
+SQL> grant connect, create to kay;
+grant connect, create to kay
+               *
+ERREUR à la ligne 1 :
+ORA-01919: le rôle 'CREATE' n'existe pas 
+
+
+SQL> grant connect, create * to kay;
+grant connect, create * to kay
+               *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant connect, create any to kay;
+grant connect, create any to kay
+               *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant connect, create all on kay to kay;
+grant connect, create all on kay to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant connect, create table on kay to kay;
+grant connect, create table on kay to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create table on kay to kay;
+grant create table on kay to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant connect to kay;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant create object on kay to kay;
+grant create object on kay to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create * to kay;
+grant create * to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create to kay;
+grant create to kay
+      *
+ERREUR à la ligne 1 :
+ORA-01919: le rôle 'CREATE' n'existe pas 
+
+
+SQL> grant create all to kay;
+grant create all to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create any to kay;
+grant create any to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create object to kay;
+grant create object to kay
+      *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create table, create view, create index to kay;
+grant create table, create view, create index to kay
+                                 *
+ERREUR à la ligne 1 :
+ORA-00990: privilège absent ou non valide 
+
+
+SQL> grant create table, create view to kay;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> create table scott.dept ();
+create table scott.dept ()
+                         *
+ERREUR à la ligne 1 :
+ORA-00904:  : identificateur non valide 
+
+
+SQL> create table scott.dept ( i int);
+create table scott.dept ( i int)
+                   *
+ERREUR à la ligne 1 :
+ORA-00955: ce nom d'objet existe déjà 
+
+
+SQL> describe scott.emp
+ Nom                                       NULL ?   Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> describe scott.dept
+ Nom                                       NULL ?   Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(14)
+ LOC                                                VARCHAR2(13)
+
+SQL> grant select on scott.emp to kay;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant select on scott.dept to kay;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> insert into kay.dept ( select * from scott.dept )
+  2  ;
+
+4 ligne(s) créée(s).
+
+SQL> commit
+  2  ;
+
+Validation effectuée.
+
+SQL> grant select on kay.dept to scott
+  2  ;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant select on kay.dept to bob;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant select on kay.dept with grant option to bob;
+grant select on kay.dept with grant option to bob
+                         *
+ERREUR à la ligne 1 :
+ORA-00905: mot-clé absent 
+
+
+SQL> grant select on kay.dept to bob with grant option;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> select * from dba_tab_privs where grantee='BOB';
+les lignes seront tronquées
+
+les lignes seront tronquées
+
+les lignes seront tronquées
+
+les lignes seront tronquées
+
+
+GRANTEE                        OWNER                          TABLE_NAME        
+------------------------------ ------------------------------ ------------------
+BOB                            KAY                            DEPT              
+
+SQL> create user todd identified by _ default tablespace users quota 1 m on users;
+create user todd identified by _ default tablespace users quota 1 m on users
+                               *
+ERREUR à la ligne 1 :
+ORA-00911: caractère non valide 
+
+
+SQL> create user todd identified by '_' default tablespace users quota 1 m on users;
+create user todd identified by '_' default tablespace users quota 1 m on users
+                               *
+ERREUR à la ligne 1 :
+ORA-00988: mot(s) de passe absent(s) ou non valide(s) 
+
+
+SQL> create user todd identified by tr_uc default tablespace users quota 1 m on users;
+
+Utilisateur créé.
+
+SQL> grant connect to todd;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> grant create any table to kay;
+
+Autorisation de privilèges (GRANT) acceptée.
+
+SQL> select * from bob.dept;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> describe dba_tables;
+ Nom                                       NULL ?   Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER                                     NOT NULL VARCHAR2(30)
+ TABLE_NAME                                NOT NULL VARCHAR2(30)
+ TABLESPACE_NAME                                    VARCHAR2(30)
+ CLUSTER_NAME                                       VARCHAR2(30)
+ IOT_NAME                                           VARCHAR2(30)
+ STATUS                                             VARCHAR2(8)
+ PCT_FREE                                           NUMBER
+ PCT_USED                                           NUMBER
+ INI_TRANS                                          NUMBER
+ MAX_TRANS                                          NUMBER
+ INITIAL_EXTENT                                     NUMBER
+ NEXT_EXTENT                                        NUMBER
+ MIN_EXTENTS                                        NUMBER
+ MAX_EXTENTS                                        NUMBER
+ PCT_INCREASE                                       NUMBER
+ FREELISTS                                          NUMBER
+ FREELIST_GROUPS                                    NUMBER
+ LOGGING                                            VARCHAR2(3)
+ BACKED_UP                                          VARCHAR2(1)
+ NUM_ROWS                                           NUMBER
+ BLOCKS                                             NUMBER
+ EMPTY_BLOCKS                                       NUMBER
+ AVG_SPACE                                          NUMBER
+ CHAIN_CNT                                          NUMBER
+ AVG_ROW_LEN                                        NUMBER
+ AVG_SPACE_FREELIST_BLOCKS                          NUMBER
+ NUM_FREELIST_BLOCKS                                NUMBER
+ DEGREE                                             VARCHAR2(10)
+ INSTANCES                                          VARCHAR2(10)
+ CACHE                                              VARCHAR2(5)
+ TABLE_LOCK                                         VARCHAR2(8)
+ SAMPLE_SIZE                                        NUMBER
+ LAST_ANALYZED                                      DATE
+ PARTITIONED                                        VARCHAR2(3)
+ IOT_TYPE                                           VARCHAR2(12)
+ TEMPORARY                                          VARCHAR2(1)
+ SECONDARY                                          VARCHAR2(1)
+ NESTED                                             VARCHAR2(3)
+ BUFFER_POOL                                        VARCHAR2(7)
+ FLASH_CACHE                                        VARCHAR2(7)
+ CELL_FLASH_CACHE                                   VARCHAR2(7)
+ ROW_MOVEMENT                                       VARCHAR2(8)
+ GLOBAL_STATS                                       VARCHAR2(3)
+ USER_STATS                                         VARCHAR2(3)
+ DURATION                                           VARCHAR2(15)
+ SKIP_CORRUPT                                       VARCHAR2(8)
+ MONITORING                                         VARCHAR2(3)
+ CLUSTER_OWNER                                      VARCHAR2(30)
+ DEPENDENCIES                                       VARCHAR2(8)
+ COMPRESSION                                        VARCHAR2(8)
+ COMPRESS_FOR                                       VARCHAR2(12)
+ DROPPED                                            VARCHAR2(3)
+ READ_ONLY                                          VARCHAR2(3)
+ SEGMENT_CREATED                                    VARCHAR2(3)
+ RESULT_CACHE                                       VARCHAR2(7)
+
+SQL> select owner, table_name where table_name='dept';
+select owner, table_name where table_name='dept'
+                         *
+ERREUR à la ligne 1 :
+ORA-00923: mot-clé FROM absent à l'emplacement prévu 
+
+
+SQL> select owner, table_name from dba_tables where table_name='dept';
+
+aucune ligne sélectionnée
+
+SQL> select owner, table_name from dba_tables where table_name='DEPT';
+
+OWNER                          TABLE_NAME                                       
+------------------------------ ------------------------------                   
+BOB                            DEPT                                             
+KAY                            DEPT                                             
+SCOTT                          DEPT                                             
+
+SQL> spoof off
+SP2-0042: commande inconnue "spoof off" - reste de la ligne ignoré.
+SQL> spool off

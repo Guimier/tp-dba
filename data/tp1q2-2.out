@@ -1,0 +1,26 @@
+SQL> select name, block_size * file_size_blks from v$controlfile;
+
+NAME                                    BLOCK_SIZE*FILE_SIZE_BLKS               
+--------------------------------------- -------------------------               
+C:\APP\ISIMA\ORADATA\ORCL\CONTROL01.CTL                   9732096               
+C:\APP\ISIMA\FLASH_RECOVERY_AREA\ORCL\C                   9732096               
+ONTROL02.CTL                                                                    
+                                                                                
+
+SQL> select name, block_size * blocks from v$datafile;
+
+NAME                                    BLOCK_SIZE*BLOCKS                       
+--------------------------------------- -----------------                       
+C:\APP\ISIMA\ORADATA\ORCL\SYSTEM01.DBF          713031680                       
+C:\APP\ISIMA\ORADATA\ORCL\SYSAUX01.DBF          524288000                       
+C:\APP\ISIMA\ORADATA\ORCL\UNDOTBS01.DBF          57671680                       
+C:\APP\ISIMA\ORADATA\ORCL\USERS01.DBF             5242880                       
+C:\APP\ISIMA\ORADATA\ORCL\EXAMPLE01.DBF         104857600                       
+
+SQL> select MEMBER, BYTES from v$logfile lf, v$log l where l.group# = lf.group#;
+
+MEMBER                                              BYTES                       
+---------------------------------------- ----------------                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO03.LOG             52428800                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO02.LOG             52428800                       
+C:\APP\ISIMA\ORADATA\ORCL\REDO01.LOG             52428800                       

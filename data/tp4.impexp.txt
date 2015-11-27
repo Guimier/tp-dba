@@ -1,0 +1,2 @@
+exp scott/tiger file=true.tmp tables=(emp,dept)
+imp bob/along file=true.tmp ignore=y
