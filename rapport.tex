@@ -4,9 +4,10 @@
 \usepackage[T1]{fontenc} % ???
 \usepackage[francais]{babel} % Typographie française
 
-\usepackage[top=1cm, bottom=2.5cm, left=1cm, right=1cm]{geometry}
+\usepackage[top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm]{geometry}
 
 \setlength{\parindent}{0pt}
+\setcounter{tocdepth}{2}
 
 \newcommand\hr\hrulefill
 
@@ -17,10 +18,14 @@
 \begin{document}
 
 \maketitle
-\newpage
+\vfill
+\vfill
 \tableofcontents
+\vfill
+\thispagestyle{empty}
 \newpage
 
 \input{tp1}
+\input{tp4}
 
 \end{document}
