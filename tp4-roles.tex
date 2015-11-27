@@ -1,0 +1,45 @@
+\subsection{Gestion des rôles}
+
+\subsubsection{Analyse du rôle \texttt{resource}}
+
+\begin{verbatim}
+SELECT privilege FROM role_sys_privs WHERE role = 'RESOURCE';
+\end{verbatim}
+
+Résultat :
+\begin{verbatim}
+PRIVILEGE                                                                       
+----------------------------------------                                        
+CREATE SEQUENCE                                                                 
+CREATE TRIGGER                                                                  
+CREATE CLUSTER                                                                  
+CREATE PROCEDURE                                                                
+CREATE TYPE                                                                     
+CREATE OPERATOR                                                                 
+CREATE TABLE                                                                    
+CREATE INDEXTYPE                                                                
+\end{verbatim}
+
+\subsubsection{Création du rôle \texttt{dev}}
+
+\begin{verbatim}
+CREATE ROLE dev;
+GRANT CREATE TABLE, CREATE VIEW TO dev;
+GRANT SELECT ON kay.dept TO dev;
+\end{verbatim}
+
+\subsubsection{Allocation de rôles à Bob}
+
+\paragraph{Allocation de \texttt{resource} et \texttt{dev}}
+
+\begin{verbatim}
+GRANT resource, dev TO bob;
+ALTER USER bob DEFAULT ROLE connect, dev;
+\end{verbatim}
+
+\paragraph{Accès au dictionnaire de données}
+
+\begin{verbatim}
+GRANT select_catalog_role TO bob;
+ALTER USER bob DEFAULT ROLE ALL EXCEPT select_catalog_file;
+\end{verbatim}
